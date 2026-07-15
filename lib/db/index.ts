@@ -4,7 +4,7 @@ import * as schema from "./schema";
 
 const databaseUrl = process.env.DATABASE_URL; // the process.env.DATABASE_URL! won't work here because the type of it is string | undefined
 if (!databaseUrl) {
-	throw new Error("DATABASE_URL is not defined");
+	throw new Error("Connection is not defined");
 }
 const sql = neon(databaseUrl);
 
