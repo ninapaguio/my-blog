@@ -15,7 +15,7 @@ const NavLinks: NavLink[] = [
 
 export default function Header() {
 	return (
-		<header className="sticky top-0 z-40 shadow-elevated">
+		<header className="sticky top-0 z-40 backdrop-blur-xl shadow-elevated">
 			<div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
 				<Image
 					src="/logo.png"
