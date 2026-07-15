@@ -16,11 +16,11 @@ export function BlogCard({ post, commentCountSlot }: BlogCardProps) {
 			<div className="rounded-xl border border-lavender-border bg-lavender p-6 transition-shadow hover:shadow-md">
 				<div className="flex items-start justify-between gap-4">
 					<div>
-						<h2 className="text-sm font-bold tracking-wide text-ink">
+						<h2 className="text-sm font-bold tracking-wide wrap-break-word text-ink">
 							{post.title.toUpperCase()}
 						</h2>
 						{post.description ? (
-							<p className="mt-1 text-sm text-ink/70">{post.description}</p>
+							<p className="mt-1 text-sm text-ink/70 wrap-break-word">{post.description}</p>
 						) : null}
 						<time
 							dateTime={post.createdAt.toISOString()}
