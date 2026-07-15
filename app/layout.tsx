@@ -8,6 +8,7 @@ const playfair = Playfair_Display({
 	subsets: ["latin"],
 	variable: "--font-display",
 	display: "swap",
+	preload: false,
 });
 
 const caveat = Caveat({
