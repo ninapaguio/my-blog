@@ -7,7 +7,7 @@ interface CommentItemProps {
 
 export function CommentItem({ comment }: CommentItemProps) {
 	return (
-		<div className="rounded-xl border border-lavender-border bg-lavender p-6">
+		<div className="rounded-xl border border-lavender-border bg-lavender p-4 sm:p-6">
 			<div className="flex items-baseline gap-2">
 				<span className="font-semibold text-ink wrap-break-word">
 					{comment.authorName}
