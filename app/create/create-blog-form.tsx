@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { TagInput } from "@/components/tag-input";
+import { TagInput } from "@/components/TagInput";
 import { type CreatePostState, createPost } from "./action";
 
 const initialState: CreatePostState = { success: false };

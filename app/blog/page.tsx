@@ -1,23 +1,42 @@
-import { neon } from "@neondatabase/serverless";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { Suspense } from "react";
+import { BlogListClient } from "@/components/BlogListClient";
+import { CommentCount, CommentCountSkeleton } from "@/components/CommentCount";
+import { getExistingTags, getPostSummaries } from "@/lib/db/queries";
 
-async function getData() {
-	const databaseUrl = process.env.DATABASE_URL;
-	if (!databaseUrl) {
-		throw new Error("DATABASE_URL is not defined");
+export const metadata: Metadata = {
+	title: "Blog",
+	description:
+		"Blog list — search by title or filter by tag to find what you're after.",
+};
+
+export default async function BlogPage() {
+	const [rows, existingTags] = await Promise.all([
+		getPostSummaries(),
+		getExistingTags(),
+	]);
+
+	const commentCountSlots: Record<string, ReactNode> = {};
+	for (const post of rows) {
+		commentCountSlots[post.id] = (
+			<Suspense fallback={<CommentCountSkeleton />}>
+				<CommentCount postId={post.id} />
+			</Suspense>
+		);
 	}
 
-	const sql = neon(databaseUrl);
-	const response = await sql`SELECT version()`;
-	return response[0].version;
-}
-
-export default async function TestDatabasePage() {
-	const data = await getData();
-
 	return (
-		<main className="p-8">
-			<h1 className="text-xl font-bold mb-2">Neon Connection Test</h1>
-			<p className="bg-gray-100 p-4 rounded font-mono text-sm">{data}</p>
+		<main className="mx-auto max-w-3xl px-6 py-16">
+			<h1 className="text-center text-5xl font-black text-tag tracking-tight">
+				BLOGS
+			</h1>
+
+			<BlogListClient
+				posts={rows}
+				existingTags={existingTags}
+				commentCountSlots={commentCountSlots}
+			/>
 		</main>
 	);
 }
