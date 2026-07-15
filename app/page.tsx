@@ -12,7 +12,7 @@ export default function HomePage() {
 					Do the <span className="text-6xl sm:text-8xl">WRITING</span>
 				</span>
 			</h1>
-			<p className="mt-6 font-sans text-base text-ink/70 m:text-lg italic">
+			<p className="mt-6 font-sans text-base text-ink/70 md:text-lg italic">
 				Every thought has a story. This is where I write mine.
 			</p>
 			<Button

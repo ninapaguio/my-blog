@@ -20,7 +20,9 @@ export function BlogCard({ post, commentCountSlot }: BlogCardProps) {
 							{post.title.toUpperCase()}
 						</h2>
 						{post.description ? (
-							<p className="mt-1 text-sm text-ink/70 wrap-break-word">{post.description}</p>
+							<p className="mt-1 text-sm text-ink/70 wrap-break-word">
+								{post.description}
+							</p>
 						) : null}
 						<time
 							dateTime={post.createdAt.toISOString()}
