@@ -5,7 +5,7 @@ export default function Footer() {
 				<p>Copyright © 2026 NiñaleneP.</p>
 
 				<p className="font-mono">
-					Designed & Built with Next.js + Tailwind CSS
+					Designed & Built with React + Next.js + Tailwind CSS
 				</p>
 			</div>
 		</footer>
