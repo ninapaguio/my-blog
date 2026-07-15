@@ -68,7 +68,7 @@ export function CommentForm({ postId }: CommentFormProps) {
 		<form
 			ref={formRef}
 			action={formAction}
-			className="rounded-xl border border-lavender-border bg-lavender p-6"
+			className="rounded-xl border border-lavender-border bg-lavender p-4 sm:p-6"
 		>
 			<input type="hidden" name="postId" value={postId} />
 
@@ -113,7 +113,7 @@ export function CommentForm({ postId }: CommentFormProps) {
 				</p>
 			)}
 
-			<div className="mt-4 flex items-center justify-between">
+			<div className="mt-4 flex flex-wrap items-center justify-between gap-2">
 				<FormMessage state={state} />
 				<SubmitButton />
 			</div>

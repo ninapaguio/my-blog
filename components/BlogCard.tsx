@@ -13,7 +13,7 @@ interface BlogCardProps {
 export function BlogCard({ post, commentCountSlot }: BlogCardProps) {
 	return (
 		<Link href={`/blog/${post.slug}`} className="group block">
-			<div className="rounded-xl border border-lavender-border bg-lavender p-6 transition-shadow hover:shadow-md">
+			<div className="rounded-xl border border-lavender-border bg-lavender p-4 transition-shadow hover:shadow-md sm:p-6">
 				<div className="flex items-start justify-between gap-4">
 					<div>
 						<h2 className="text-sm font-bold tracking-wide wrap-break-word text-ink">

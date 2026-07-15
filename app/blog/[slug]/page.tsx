@@ -90,8 +90,8 @@ export default async function PostPage({ params }: PostPageProps) {
 
 	return (
 		<ReadingThemeProvider>
-			<main className="mx-auto max-w-3xl px-6 py-16">
-				<div className="flex items-center justify-between">
+			<main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-16">
+				<div className="flex flex-wrap items-center justify-between gap-2">
 					<Button
 						render={<Link href="/blog" />}
 						nativeButton={false}
@@ -106,13 +106,13 @@ export default async function PostPage({ params }: PostPageProps) {
 					<ReadingThemeToggle />
 				</div>
 
-				<h1 className="mt-6 text-center font-script text-6xl text-ink">
+				<h1 className="mt-6 text-center font-script text-4xl text-ink sm:text-5xl md:text-6xl">
 					{post.title}
 				</h1>
 
 				<PostDescription description={post.description} />
 
-				<div className="mt-6 flex items-center justify-between border-b border-ink/80 pb-4">
+				<div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-b border-ink/80 pb-4">
 					<div className="flex flex-wrap gap-2">
 						{post.tags.map((tag) => (
 							<TagBadge key={tag} label={tag} />
@@ -131,7 +131,7 @@ export default async function PostPage({ params }: PostPageProps) {
 				</article>
 
 				<section className="mt-20">
-					<h2 className="text-3xl font-bold text-ink">Comments</h2>
+					<h2 className="text-2xl font-bold text-ink sm:text-3xl">Comments</h2>
 
 					<div className="mt-6">
 						<CommentForm postId={post.id} />
