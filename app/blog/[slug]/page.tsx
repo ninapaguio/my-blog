@@ -3,6 +3,10 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+	ReadingThemeProvider,
+	ReadingThemeToggle,
+} from "@/components/BlogTheme";
 import { CommentItem } from "@/components/CommentItem";
 import { TagBadge } from "@/components/TagBadge";
 import { Button } from "@/components/ui/button";
@@ -85,51 +89,57 @@ export default async function PostPage({ params }: PostPageProps) {
 	const postComments = await getPostComments(post.id);
 
 	return (
-		<main className="mx-auto max-w-3xl px-6 py-16">
-			<Button
-				render={<Link href="/blog" />}
-				nativeButton={false}
-				size="xs"
-				variant="ghost"
-				className="-ml-3"
-			>
-				<ArrowLeft className="size-4" aria-hidden />
-				Back to blog
-			</Button>
+		<ReadingThemeProvider>
+			<main className="mx-auto max-w-3xl px-6 py-16">
+				<div className="flex items-center justify-between">
+					<Button
+						render={<Link href="/blog" />}
+						nativeButton={false}
+						size="xs"
+						variant="ghost"
+						className="-md-3 text-ink"
+					>
+						<ArrowLeft className="size-3" aria-hidden />
+						Back to blog
+					</Button>
 
-			<h1 className="mt-6 text-center font-script text-6xl text-ink">
-				{post.title}
-			</h1>
-
-			<PostDescription description={post.description} />
-
-			<div className="mt-6 flex items-center justify-between border-b border-ink/80 pb-4">
-				<div className="flex flex-wrap gap-2">
-					{post.tags.map((tag) => (
-						<TagBadge key={tag} label={tag} />
-					))}
-				</div>
-				<time
-					dateTime={post.createdAt.toISOString()}
-					className="shrink-0 text-xs text-ink/50"
-				>
-					{formatDate(post.createdAt)}
-				</time>
-			</div>
-
-			<article className="mt-6 text-sm leading-relaxed whitespace-pre-wrap text-ink/90">
-				{post.body}
-			</article>
-
-			<section className="mt-20">
-				<h2 className="text-3xl font-bold text-ink">Comments</h2>
-
-				<div className="mt-6">
-					<CommentForm postId={post.id} />
+					<ReadingThemeToggle />
 				</div>
 
-				<CommentsSection comments={postComments} />
-			</section>
-		</main>
+				<h1 className="mt-6 text-center font-script text-6xl text-ink">
+					{post.title}
+				</h1>
+
+				<PostDescription description={post.description} />
+
+				<div className="mt-6 flex items-center justify-between border-b border-ink/80 pb-4">
+					<div className="flex flex-wrap gap-2">
+						{post.tags.map((tag) => (
+							<TagBadge key={tag} label={tag} />
+						))}
+					</div>
+					<time
+						dateTime={post.createdAt.toISOString()}
+						className="shrink-0 text-xs text-ink/50"
+					>
+						{formatDate(post.createdAt)}
+					</time>
+				</div>
+
+				<article className="mt-6 text-sm leading-relaxed whitespace-pre-wrap text-ink/90">
+					{post.body}
+				</article>
+
+				<section className="mt-20">
+					<h2 className="text-3xl font-bold text-ink">Comments</h2>
+
+					<div className="mt-6">
+						<CommentForm postId={post.id} />
+					</div>
+
+					<CommentsSection comments={postComments} />
+				</section>
+			</main>
+		</ReadingThemeProvider>
 	);
 }
