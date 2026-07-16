@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { TagInput } from "@/components/TagInput";
+import { Button } from "@/components/ui/button";
 import { type CreatePostState, createPost } from "./action";
 
 const initialState: CreatePostState = { success: false };
@@ -15,13 +16,16 @@ function SubmitButton() {
 	const { pending } = useFormStatus();
 
 	return (
-		<button
+		<Button
 			type="submit"
 			disabled={pending}
-			className="w-full rounded-lg bg-accent py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
+			nativeButton={true}
+			variant="default"
+			size="default"
+			className="w-full rounded-lg bg-accent py-3 text-sm font-semibold normal-case tracking-normal text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
 		>
 			{pending ? "Posting..." : "Post"}
-		</button>
+		</Button>
 	);
 }
 
