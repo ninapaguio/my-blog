@@ -125,7 +125,7 @@ export function TagsCombobox({
 					open ? "rounded-t-lg border-accent" : "rounded-lg"
 				}`}
 			>
-				<div className="flex flex-1 flex-wrap items-center gap-1.5">
+				<div className="flex flex-1 flex-wrap bg-white items-center gap-1.5">
 					<ComboboxValue>
 						{value.map((tag) => (
 							<ComboboxChip

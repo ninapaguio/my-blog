@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ThemeProvider, ThemeToggle } from "@/components/BlogTheme";
 import { CommentItem } from "@/components/CommentItem";
 import { TagBadge } from "@/components/TagBadge";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,6 @@ interface PostPageProps {
 	params: Promise<{ slug: string }>;
 }
 
-type Post = NonNullable<Awaited<ReturnType<typeof getPost>>>;
 type Comment = Awaited<ReturnType<typeof getPostComments>>[number];
 
 async function getPost(slug: string) {
@@ -40,20 +40,6 @@ export async function generateMetadata({
 		return { title: "Post not found" };
 	}
 	return { title: post.title, description: post.description };
-}
-
-function PostDescription({
-	description,
-}: {
-	description: Post["description"];
-}) {
-	if (!description) {
-		return null;
-	}
-
-	return (
-		<p className="mt-8 text-center text-sm italic text-ink/70">{description}</p>
-	);
 }
 
 function CommentsSection({ comments }: { comments: Comment[] }) {
@@ -85,51 +71,61 @@ export default async function PostPage({ params }: PostPageProps) {
 	const postComments = await getPostComments(post.id);
 
 	return (
-		<main className="mx-auto max-w-3xl px-6 py-16">
-			<Button
-				render={<Link href="/blog" />}
-				nativeButton={false}
-				size="xs"
-				variant="ghost"
-				className="-ml-3"
-			>
-				<ArrowLeft className="size-4" aria-hidden />
-				Back to blog
-			</Button>
+		<ThemeProvider>
+			<main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-16">
+				<div className="flex flex-wrap items-center justify-between gap-2">
+					<Button
+						render={<Link href="/blog" />}
+						nativeButton={false}
+						size="xs"
+						variant="ghost"
+						className="-md-3 text-ink"
+					>
+						<ArrowLeft className="size-3" aria-hidden />
+						Back to blog
+					</Button>
 
-			<h1 className="mt-6 text-center font-script text-6xl text-ink">
-				{post.title}
-			</h1>
-
-			<PostDescription description={post.description} />
-
-			<div className="mt-6 flex items-center justify-between border-b border-ink/80 pb-4">
-				<div className="flex flex-wrap gap-2">
-					{post.tags.map((tag) => (
-						<TagBadge key={tag} label={tag} />
-					))}
-				</div>
-				<time
-					dateTime={post.createdAt.toISOString()}
-					className="shrink-0 text-xs text-ink/50"
-				>
-					{formatDate(post.createdAt)}
-				</time>
-			</div>
-
-			<article className="mt-6 text-sm leading-relaxed whitespace-pre-wrap text-ink/90">
-				{post.body}
-			</article>
-
-			<section className="mt-20">
-				<h2 className="text-3xl font-bold text-ink">Comments</h2>
-
-				<div className="mt-6">
-					<CommentForm postId={post.id} />
+					<ThemeToggle />
 				</div>
 
-				<CommentsSection comments={postComments} />
-			</section>
-		</main>
+				<h1 className="mt-6 text-center font-script text-4xl text-ink sm:text-5xl md:text-6xl">
+					{post.title}
+				</h1>
+
+				<p className="mt-8 text-center text-sm italic text-ink/70">
+					{post.description || "No description"}
+				</p>
+
+				<div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-b border-ink/80 pb-4">
+					<div className="flex flex-wrap gap-2">
+						{post.tags.map((tag) => (
+							<TagBadge key={tag} label={tag} />
+						))}
+					</div>
+					<time
+						dateTime={post.createdAt.toISOString()}
+						className="shrink-0 text-xs text-ink/50"
+					>
+						{formatDate(post.createdAt)}
+					</time>
+				</div>
+
+				<article className="mt-6 text-sm/8 md:text-sm leading-relaxed whitespace-pre-wrap text-ink/90">
+					{post.body}
+				</article>
+
+				<section className="mt-20">
+					<h2 className="text-base md:text-base mt-8 font-bold text-ink sm:text-left">
+						Comments
+					</h2>
+
+					<div className="mt-6">
+						<CommentForm postId={post.id} />
+					</div>
+
+					<CommentsSection comments={postComments} />
+				</section>
+			</main>
+		</ThemeProvider>
 	);
 }

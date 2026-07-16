@@ -20,7 +20,7 @@ function FieldSkeleton({
 export default function CreateBlogLoading() {
 	return (
 		<main
-			className="mx-auto max-w-2xl px-6 py-16"
+			className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16"
 			role="status"
 			aria-label="Loading form"
 		>

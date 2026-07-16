@@ -27,8 +27,8 @@ export default async function BlogPage() {
 	}
 
 	return (
-		<main className="mx-auto max-w-3xl px-6 py-16">
-			<h1 className="text-center text-5xl font-black text-tag tracking-tight">
+		<main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-16">
+			<h1 className="text-center text-3xl font-black text-tag tracking-tight sm:text-4xl md:text-5xl">
 				BLOGS
 			</h1>
 

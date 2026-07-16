@@ -11,18 +11,19 @@ interface NavLink {
 const NavLinks: NavLink[] = [
 	{ label: "Home", href: "/" },
 	{ label: "Blog", href: "/blog" },
+	{ label: "About", href: "/about" },
 ] as const;
 
 export default function Header() {
 	return (
 		<header className="sticky top-0 z-40 backdrop-blur-xl shadow-elevated">
-			<div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+			<div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:h-16 sm:px-6">
 				<Image
 					src="/logo.png"
 					alt="Logo"
 					width={150}
 					height={25}
-					className="h-8 w-auto"
+					className="h-7 md:auto sm:h-6"
 					priority
 				/>
 

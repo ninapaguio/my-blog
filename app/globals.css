@@ -20,15 +20,39 @@
 	--shadow-elevated-top: 0 -4px 12px -4px var(--shadow-color-elevated);
 }
 
+[data-theme="warm"] {
+	--color-ink: #3a2a1d;
+	--color-canvas: #f4ecd8;
+	--color-lavender: #ece0c4;
+	--color-lavender-border: #ddcca5;
+	--color-accent: #a8763e;
+	--color-accent-hover: #8f6531;
+	--color-tag: #6b4a24;
+}
+
+[data-theme="dark"] {
+	--color-ink: #f1eef7;
+	--color-canvas: #17151d;
+	--color-lavender: #211f2b;
+	--color-lavender-border: #34313f;
+	--color-accent: #9b7cd6;
+	--color-accent-hover: #ab8fe0;
+	--color-tag: #c9b6ef;
+	--shadow-color-elevated: rgba(0, 0, 0, 0.4);
+}
+
 body {
 	background-color: var(--color-canvas);
 	color: var(--color-ink);
 	font-family: var(--font-sans);
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
 }
 
 ::selection {
 	background-color: var(--color-accent);
-	color: white;
+	color: var(--color-white);
 }
 
 @utility label-style {
@@ -42,6 +66,7 @@ body {
 	font-size: 0.875rem;
 	line-height: 1.25rem;
 	outline: none;
+	background-color: var(--color-white);
 
 	&:focus {
 		border-color: var(--color-accent);
