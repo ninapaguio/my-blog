@@ -31,24 +31,27 @@ export function BlogCard({ post, commentCountSlot }: BlogCardProps) {
 							{formatDate(post.createdAt)}
 						</time>
 					</div>
-					<div className="flex shrink-0 flex-col items-end gap-2">
-						{commentCountSlot}
-						<span
-							aria-hidden
-							className="flex size-7 items-center justify-center rounded-full bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-white"
-						>
-							<ArrowUpRight className="size-3.5" />
-						</span>
-					</div>
+
+					{commentCountSlot ? (
+						<div className="flex shrink-0 flex-col items-end gap-2">
+							{commentCountSlot}
+						</div>
+					) : null}
 				</div>
 
-				{post.tags.length > 0 ? (
-					<div className="mt-4 flex flex-wrap gap-2">
+				<div className="mt-4 flex items-center justify-between gap-4">
+					<div className="flex flex-wrap gap-2">
 						{post.tags.map((tag) => (
 							<TagBadge key={tag} label={tag} />
 						))}
 					</div>
-				) : null}
+					<span
+						aria-hidden
+						className="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-white"
+					>
+						<ArrowUpRight className="size-3.5" />
+					</span>
+				</div>
 			</div>
 		</Link>
 	);
