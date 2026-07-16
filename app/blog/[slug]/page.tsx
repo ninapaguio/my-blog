@@ -3,10 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-	ReadingThemeProvider,
-	ReadingThemeToggle,
-} from "@/components/BlogTheme";
+import { ThemeProvider, ThemeToggle } from "@/components/BlogTheme";
 import { CommentItem } from "@/components/CommentItem";
 import { TagBadge } from "@/components/TagBadge";
 import { Button } from "@/components/ui/button";
@@ -19,7 +16,6 @@ interface PostPageProps {
 	params: Promise<{ slug: string }>;
 }
 
-type Post = NonNullable<Awaited<ReturnType<typeof getPost>>>;
 type Comment = Awaited<ReturnType<typeof getPostComments>>[number];
 
 async function getPost(slug: string) {
@@ -44,20 +40,6 @@ export async function generateMetadata({
 		return { title: "Post not found" };
 	}
 	return { title: post.title, description: post.description };
-}
-
-function PostDescription({
-	description,
-}: {
-	description: Post["description"];
-}) {
-	if (!description) {
-		return null;
-	}
-
-	return (
-		<p className="mt-8 text-center text-sm italic text-ink/70">{description}</p>
-	);
 }
 
 function CommentsSection({ comments }: { comments: Comment[] }) {
@@ -89,7 +71,7 @@ export default async function PostPage({ params }: PostPageProps) {
 	const postComments = await getPostComments(post.id);
 
 	return (
-		<ReadingThemeProvider>
+		<ThemeProvider>
 			<main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-16">
 				<div className="flex flex-wrap items-center justify-between gap-2">
 					<Button
@@ -103,14 +85,16 @@ export default async function PostPage({ params }: PostPageProps) {
 						Back to blog
 					</Button>
 
-					<ReadingThemeToggle />
+					<ThemeToggle />
 				</div>
 
 				<h1 className="mt-6 text-center font-script text-4xl text-ink sm:text-5xl md:text-6xl">
 					{post.title}
 				</h1>
 
-				<PostDescription description={post.description} />
+				<p className="mt-8 text-center text-sm italic text-ink/70">
+					{post.description || "No description"}
+				</p>
 
 				<div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-b border-ink/80 pb-4">
 					<div className="flex flex-wrap gap-2">
@@ -126,12 +110,14 @@ export default async function PostPage({ params }: PostPageProps) {
 					</time>
 				</div>
 
-				<article className="mt-6 text-sm leading-relaxed whitespace-pre-wrap text-ink/90">
+				<article className="mt-6 text-sm/8 md:text-sm leading-relaxed whitespace-pre-wrap text-ink/90">
 					{post.body}
 				</article>
 
 				<section className="mt-20">
-					<h2 className="text-2xl font-bold text-ink sm:text-3xl">Comments</h2>
+					<h2 className="text-base md:text-base mt-8 font-bold text-ink sm:text-left">
+						Comments
+					</h2>
 
 					<div className="mt-6">
 						<CommentForm postId={post.id} />
@@ -140,6 +126,6 @@ export default async function PostPage({ params }: PostPageProps) {
 					<CommentsSection comments={postComments} />
 				</section>
 			</main>
-		</ReadingThemeProvider>
+		</ThemeProvider>
 	);
 }

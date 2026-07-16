@@ -11,6 +11,7 @@ interface NavLink {
 const NavLinks: NavLink[] = [
 	{ label: "Home", href: "/" },
 	{ label: "Blog", href: "/blog" },
+	{ label: "About", href: "/about" },
 ] as const;
 
 export default function Header() {
@@ -22,7 +23,7 @@ export default function Header() {
 					alt="Logo"
 					width={150}
 					height={25}
-					className="h-7 w-auto sm:h-8"
+					className="h-7 md:auto sm:h-6"
 					priority
 				/>
 

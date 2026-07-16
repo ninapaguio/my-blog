@@ -25,6 +25,7 @@ export default function PostLoading() {
 			<Skeleton className="-ml-3 h-8 w-28 rounded-md bg-ink/10" />
 
 			<Skeleton className="mx-auto mt-6 h-10 w-48 bg-ink/10 sm:h-14 sm:w-64" />
+			<Skeleton className="mx-auto flex items-center gap-1 rounded-full border mt-6 h-10 w-48 bg-ink/10 sm:h-14 sm:w-64 p-1" />
 			<Skeleton className="mx-auto mt-8 h-3 w-48 bg-ink/10" />
 
 			<div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-b border-ink/10 pb-4">

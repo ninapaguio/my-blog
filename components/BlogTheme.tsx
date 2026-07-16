@@ -9,7 +9,7 @@ const ThemeContext = createContext<{
 	setTheme: (theme: Theme) => void;
 } | null>(null);
 
-export function ReadingThemeProvider({ children }: { children: ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
 	const [theme, setTheme] = useState<Theme>("default");
 
 	return (
@@ -30,7 +30,7 @@ const options: { value: Theme; label: string }[] = [
 	{ value: "dark", label: "Dark" },
 ];
 
-export function ReadingThemeToggle() {
+export function ThemeToggle() {
 	const ctx = useContext(ThemeContext);
 	if (!ctx) return null;
 	const { theme, setTheme } = ctx;
