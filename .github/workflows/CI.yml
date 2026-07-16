@@ -33,5 +33,6 @@ jobs:
       - name: Type Check
         run: pnpm exec tsc --noEmit
 
-      - name: Production Build
-        run: pnpm build
+    # for local run since it is dynamic rendering
+    #  - name: Production Build
+    #   run: pnpm build
