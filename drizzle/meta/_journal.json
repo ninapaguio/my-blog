@@ -1,27 +1,34 @@
 {
-	"version": "7",
-	"dialect": "postgresql",
-	"entries": [
-		{
-			"idx": 0,
-			"version": "7",
-			"when": 1783509040252,
-			"tag": "0000_secret_mother_askani",
-			"breakpoints": true
-		},
-		{
-			"idx": 1,
-			"version": "7",
-			"when": 1783646156251,
-			"tag": "0001_rare_ricochet",
-			"breakpoints": true
-		},
-		{
-			"idx": 2,
-			"version": "7",
-			"when": 1783646812286,
-			"tag": "0002_flimsy_groot",
-			"breakpoints": true
-		}
-	]
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1783509040252,
+      "tag": "0000_secret_mother_askani",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1783646156251,
+      "tag": "0001_rare_ricochet",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783646812286,
+      "tag": "0002_flimsy_groot",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784190829676,
+      "tag": "0003_cheerful_gladiator",
+      "breakpoints": true
+    }
+  ]
 }
