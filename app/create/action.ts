@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { posts } from "@/lib/db/schema";
 import { slugify } from "@/lib/format";
+import { verifyPostPassword } from "@/lib/postpassword";
+import { checkRateLimit } from "@/lib/ratelimit";
 import { createPostSchema } from "@/lib/validations";
 
 export interface CreatePostState {
@@ -23,6 +25,14 @@ export async function createPost(
 	_: unknown,
 	formData: FormData,
 ): Promise<CreatePostState> {
+	const { allowed } = await checkRateLimit("create-post");
+	if (!allowed) {
+		return {
+			success: false,
+			error: "Too many attempts. Please wait a few minutes and try again.",
+		};
+	}
+
 	let tags: string[] = [];
 	try {
 		const raw = formData.get("tags");
@@ -47,13 +57,7 @@ export async function createPost(
 		};
 	}
 
-	if (!process.env.POST_BLOG_PASSWORD) {
-		return {
-			success: false,
-			error: "Couldn't process the password. Contact an admin.",
-		};
-	}
-	if (parsed.data.password !== process.env.POST_BLOG_PASSWORD) {
+	if (!verifyPostPassword(parsed.data.password)) {
 		return {
 			success: false,
 			error: "Incorrect password.",
