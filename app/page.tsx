@@ -3,16 +3,18 @@ import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
 	return (
-		<main className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center">
+		<main className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-3xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-24">
 			<h1 className="font-display leading-[0.95] text-gray-950">
-				<span className="block text-8xl sm:text-7xl">
-					Let your <span className="text-6xl sm:text-8xl">MIND</span>
+				<span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+					Let your{" "}
+					<span className="text-6xl sm:text-7xl md:text-8xl">MIND</span>
 				</span>
-				<span className="block text-8xl sm:text-7xl">
-					Do the <span className="text-6xl sm:text-8xl">WRITING</span>
+				<span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+					Do the{" "}
+					<span className="text-6xl sm:text-7xl md:text-8xl">WRITING</span>
 				</span>
 			</h1>
-			<p className="mt-6 font-sans text-base text-ink/70 m:text-lg italic">
+			<p className="mt-6 font-sans text-base text-ink/70 md:text-lg italic">
 				Every thought has a story. This is where I write mine.
 			</p>
 			<Button
