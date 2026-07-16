@@ -68,7 +68,7 @@ export async function getPostSummaries(): Promise<PostSummary[]> {
 export async function getExistingTags(): Promise<string[]> {
 	"use cache";
 	cacheTag("post-tags");
-	cacheLife("hours");
+	cacheLife("seconds");
 
 	try {
 		const rows = await db.select({ tags: posts.tags }).from(posts);
