@@ -15,7 +15,7 @@ export default function AboutPage() {
 				About
 			</h1>
 
-			<div className="mt-10 space-y-6 text-sm leading-relaxed text-ink/80 sm:text-base">
+			<div className="mt-10 text-justify space-y-6 text-sm leading-relaxed text-ink/80 sm:text-base">
 				<p>
 					This is a personal space for writing things down some are half-formed
 					ideas, things I'm learning, and the occasional story that wouldn't
