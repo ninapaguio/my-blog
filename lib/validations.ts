@@ -25,9 +25,9 @@ export const createPostSchema = z.object({
 	description: z
 		.string()
 		.trim()
-		.min(50, "Description at least 50 character is required")
+		.min(50, "Short description must be at least 50 characters")
 		.max(500, "Short description must be 500 characters or fewer"),
-	body: z.string().trim().min(750, "Content must be at least 20 characters"),
+	body: z.string().trim().min(750, "Content must be at least 750 characters"),
 	tags: z
 		.array(z.string().trim().min(1).max(30))
 		.max(5, "Use 5 tags or fewer")

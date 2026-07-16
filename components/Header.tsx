@@ -43,16 +43,6 @@ export default function Header() {
 							</li>
 						))}
 					</ul>
-
-					<Button
-						render={<Link href="/create" />}
-						nativeButton={false}
-						size="xs"
-						variant="default"
-						className="rounded-full bg-accent px-3 py-2 text-white transition-colors hover:bg-accent-hover"
-					>
-						Create Blog
-					</Button>
 				</nav>
 
 				<MobileNav links={NavLinks} />

@@ -57,14 +57,6 @@ export default function MobileNav({ links }: MobileNavProps) {
 							{link.label}
 						</Button>
 					))}
-
-					<Button
-						render={<Link href="/create" onClick={() => setOpen(false)} />}
-						nativeButton={false}
-						className="mt-2 rounded-full bg-accent px-3 py-2 text-white transition-colors hover:bg-accent-hover"
-					>
-						Create Blog
-					</Button>
 				</nav>
 			</SheetContent>
 		</Sheet>
