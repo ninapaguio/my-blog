@@ -60,7 +60,7 @@ export function BlogListClient({
 					<p className="py-16 text-center text-sm text-ink/50">
 						{titleQuery || selectedTags.length > 0
 							? "No posts match your search. Try a different keyword or tag."
-							: "No posts yet. Be the first to write one."}
+							: "No posts yet."}
 					</p>
 				) : (
 					filteredPosts.map((post) => (
