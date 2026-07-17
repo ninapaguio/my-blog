@@ -11,6 +11,8 @@ It is a web-based personal blog built with React 19 and Next.js 16
 | Database | Neon Postgres (`neon-http` driver) |
 | ORM | Drizzle ORM v2 |
 | Validation | Zod |
+| URL | Slugify, nanoid |
+| ratelimit | vanilla |
 | Forms | `useActionState` + `useFormStatus` (no client-side loading state) |
 
 ## Getting started
